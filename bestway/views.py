@@ -4,7 +4,7 @@
 import requests
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 
 from bestway.form import *
 
@@ -15,19 +15,20 @@ def home(request):
     if request.method == 'POST':
         address_form = AddressForm(request.POST)
         if address_form.is_valid():
-            addresses = [
+            start_end = [
                 address_form.cleaned_data['address_start'],
                 address_form.cleaned_data['address_end']
             ]
-            print(addresses)
-
-            return HttpResponseRedirect('')
+            return redirect('destinations', {"start_end": start_end})
 
     else:
         address_form = AddressForm()
 
     return render(request, 'home.html', {"address_form": address_form})
 
+def destinations(request, start_end):
+
+    return render(request, 'destinations.html')
 
 def mentions_legales(request):
 

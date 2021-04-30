@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>GW-BestWay</title>
+        <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <link href="{% static 'assets/img/gearwheel.png' %}" rel="icon" type="image/png" sizes="16x16"/>
+    </head>
+
+    <body>
+
+        <!-- Navigation-->
+        <nav>
+            
+        </nav>
+
+        <!-- Block-->
+        <div>
+            <img id="img_traffic" src="{% static 'assets/img/traffic.png' %}"/>
+            <img id="img_gearwheel" src="{% static 'assets/img/gearwheel.png' %}"/>
+            <h1>Entre tes destinations et valide lorsque tu les as toutes envoyé.</h1>
+        </div>
+
+        <!-- form-->
+        <form action="" method="post">
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- Footer-->
+        <footer>
+            <a href="mentions_legales">
+                <h3>Mentions legales</h3>
+            </a>
+        </footer>
+
+    </body>
+</html>
