@@ -26,10 +26,10 @@
         </div>
 
         <!-- form-->
-        <form action="/your-name/" method="post">
-            <label for="lenomduformcotéback">point de départ: </label>
-            <input id="your_name" type="text" name="your_name" value="{{ lavariableducontextedegabaritutilisée }}">
-            <input type="submit" value="valider">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ address_form }}
+            <input type="submit" value="Submit">
         </form>
 
         <!-- Footer-->
