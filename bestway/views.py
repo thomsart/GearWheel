@@ -5,6 +5,7 @@ import requests
 
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.http import HttpRequest
 
 from bestway.form import *
 
@@ -16,17 +17,22 @@ def home(request):
         address_form = AddressForm(request.POST)
         if address_form.is_valid():
             start_end = [
-                address_form.cleaned_data['address_start'],
-                address_form.cleaned_data['address_end']
+                address_form.cleaned_data['start'],
+                address_form.cleaned_data['end']
             ]
-            return redirect('destinations', {"start_end": start_end})
+            return redirect('destinations', start_end)
 
     else:
         address_form = AddressForm()
 
     return render(request, 'home.html', {"address_form": address_form})
 
-def destinations(request, start_end):
+def destinations(request, *args):
+
+    start = request.POST['start']
+    end = request.POST['end']
+    print(start)
+    print(end)
 
     return render(request, 'destinations.html')
 
