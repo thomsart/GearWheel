@@ -31,8 +31,8 @@ def destinations(request, *args):
 
     start = request.POST['start']
     end = request.POST['end']
-    print(start)
-    print(end)
+    # print(start)
+    # print(end)
 
     return render(request, 'destinations.html')
 

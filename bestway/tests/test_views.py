@@ -23,12 +23,24 @@ class TestViews(TestCase):
 
         self.client = Client()
 
+        self.start_end = ['Paris', 'Milan']
+
         return super().setUp()
 
     def test_home(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
+
+    def test_destinations_with_datas_in_body(self):
+        response = self.client.post(reverse('destinations', args=self.start_end))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'destinattions.html')
+
+    # def test_destinations_without_datas_in_body(self):
+    #     response = self.client.get(reverse('destinations', args={}))
+    #     self.assertEqual(response.status_code, 404)
+    #     self.assertTemplateUsed(response, 'destinattions.html')
 
     def test_mentions_legales(self):
         response = self.client.get(reverse('mentions_legales'))
