@@ -15,12 +15,9 @@ def home(request):
 
     if request.method == 'POST':
         address_form = AddressForm(request.POST)
+
         if address_form.is_valid():
-            start_end = [
-                address_form.cleaned_data['start'],
-                address_form.cleaned_data['end']
-            ]
-            return redirect('destinations', start_end)
+            return redirect('destinations', address_form.cleaned_data)
 
     else:
         address_form = AddressForm()
