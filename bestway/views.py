@@ -17,21 +17,42 @@ def home(request):
         address_form = AddressForm(request.POST)
 
         if address_form.is_valid():
-            return redirect('destinations', address_form.cleaned_data)
+            start = address_form.cleaned_data['start']
+            end = address_form.cleaned_data['end']
+
+            print(request.POST['start'])
+            print(request.POST['end'])
+
+            return redirect('destinations')
 
     else:
         address_form = AddressForm()
 
     return render(request, 'home.html', {"address_form": address_form})
 
-def destinations(request, *args):
+def destinations(request):
 
-    start = request.POST['start']
-    end = request.POST['end']
-    # print(start)
-    # print(end)
+    # places = {
+    #     'start': request.POST['start'],
+    #     'end': request.POST['end'],
+    #     'stops': []
+    # }
 
-    return render(request, 'destinations.html')
+    if request.method == 'POST':
+        stops_form = StopsForm(request.POST)
+
+        if stops_form.is_valid():
+            print(stops_form.cleaned_data['stops'])
+            # places['stops'].append(stops_form.cleaned_data['stops'])
+
+    else:
+        stops_form = StopForm()
+
+    return render(request, 'destinations.html', {"stops_form": stops_form})
+
+def result(request):
+
+    return render(request, 'result.html')
 
 def mentions_legales(request):
 
