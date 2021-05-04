@@ -25,10 +25,6 @@ class TestViews(TestCase):
 
         self.client = Client()
 
-        self.start_end = {'start': 'Paris', 'end': 'Milan'}
-
-        self.empty_dict = {'start': '', 'end': ''}
-
         return super().setUp()
 
     def test_home(self):

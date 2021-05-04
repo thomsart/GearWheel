@@ -39,6 +39,7 @@ def destinations(request):
     # }
 
     if request.method == 'POST':
+
         stops_form = StopsForm(request.POST)
 
         if stops_form.is_valid():

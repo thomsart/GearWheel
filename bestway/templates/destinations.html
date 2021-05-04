@@ -31,6 +31,11 @@
             <input type="submit" value="Valider">
         </form>
 
+        <form action="result/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Calculer">
+        </form>
+
         <!-- Footer-->
         <footer>
             <a href="mentions_legales">
