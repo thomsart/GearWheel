@@ -10,8 +10,8 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 
-from bestway.models import User
 from address.models import Address
+from bestway.models import User
 from bestway.form import *
 
 # Create your views here.
@@ -49,12 +49,6 @@ def home(request):
 
 @login_required
 def destinations(request):
-
-    # places = {
-    #     'start': request.POST['start'],
-    #     'end': request.POST['end'],
-    #     'stops': []
-    # }
 
     if request.method == 'POST':
 
