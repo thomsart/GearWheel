@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import User
+from bestway.models import User
 # from ... import User
 
 # Create your models here.

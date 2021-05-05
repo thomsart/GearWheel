@@ -1,0 +1,5 @@
+<form id="form_login_register" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">valider</button>
+</form>

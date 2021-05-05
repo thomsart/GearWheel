@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bestway',
     'address',
-    'user',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +77,7 @@ WSGI_APPLICATION = 'gearwheel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
-        'NAME': 'gw_db', # le nom de notre base de donnees creee precedemment
+        'NAME': 'gearwheel_db', # le nom de notre base de donnees creee precedemment
         'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur
         'PASSWORD': 'metalspirit77+',
         'HOST': '127.0.0.1',
@@ -128,3 +127,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
