@@ -8,6 +8,9 @@ from django.shortcuts import redirect
 from django.http import HttpRequest
 
 from bestway.form import *
+from user.models import User
+from address.models import Address
+
 
 # Create your views here.
 
