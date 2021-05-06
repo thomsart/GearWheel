@@ -32,15 +32,29 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
 
-    def test_destinations(self):
-        response = self.client.post(reverse('destinations'))
+    def test_signup(self):
+        response = self.client.get(reverse('signup'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'destinations.html')
+        self.assertTemplateUsed(response, 'registration/signup.html')
 
-    def test_result(self):
-        response = self.client.get(reverse('result'))
+    def test_login(self):
+        response = self.client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'result.html')
+        self.assertTemplateUsed(response, 'registration/login.html')
+
+
+    # def test_account(self):
+    #     pass
+
+    # def test_destinations(self):
+    #     response = self.client.post(reverse('destinations'))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'destinations.html')
+
+    # def test_result(self):
+    #     response = self.client.get(reverse('result'))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'result.html')
 
     def test_mentions_legales(self):
         response = self.client.get(reverse('mentions_legales'))
