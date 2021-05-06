@@ -1,1 +1,16 @@
-<h1>Compte utilisateur</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Block-->
+    <div class="container_column">
+
+        <h1>Bonjour {{ user.first_name }} !</h1>
+        <h2>Votre username est : {{ user.username }}</h2>
+        <h2>Votre adresse email est : {{ user.email }}</h2>
+        
+
+    </div>
+
+{% endblock content %}

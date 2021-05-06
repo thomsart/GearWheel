@@ -15,10 +15,9 @@
         <nav>
             <div class="container_row">
                 <a href="/bestway/"><img id="img_gearwheel" src="/static/assets/img/gearwheel_nav.png" title="Accueil"></a>
-                <div class="title"><h1>GearWheel - Bestway-Application</h1></div>
-                <a href="#page-top"><h3 title="Haut-de-page">BestWay</h3></a>
+                <h1>GearWheel - Bestway-Application</h1>
                 {% if user.is_authenticated %}
-                    <a href="/account/"><img src="/static/assets/img/icon_user_loged.png" title="Mon Compte"></a>
+                    <a href="/bestway/account/"><img src="/static/assets/img/icon_user_loged.png" title="Mon Compte"></a>
                     <a href="{% url 'logout' %}"><img src="/static/assets/img/icon_logout.png" title="Déconnexion"></a>
                 {% else %}
                     <a href="{% url 'login' %}"><img src="/static/assets/img/icon_login.png" title="Connexion"></a>
