@@ -13,26 +13,21 @@
     <body>
 
         <nav>
-            <div class="container">
-                <a href="/">
-                    <img id="img_gearwheel" src="/static/assets/img/gearwheel.png" title="Accueil" sizes="10/10">
-                </a>
+            <div class="container_row">
+                <a href="/bestway/"><img id="img_gearwheel" src="/static/assets/img/gearwheel_nav.png" title="Accueil"></a>
+                <div class="title"><h1>GearWheel - Bestway-Application</h1></div>
                 <a href="#page-top"><h3 title="Haut-de-page">BestWay</h3></a>
-                <div>
-                    <ul>
-                        {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/account/"><img src="/static/assets/img/icon_user_loged.png" title="Mon Compte"></a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><img src="/static/assets/img/icon_logout.png" title="Déconnexion"></a></li>
-                        {% else %}
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}"><img src="/static/assets/img/icon_login.png" title="Connexion"></a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'signup' %}"><img src="/static/assets/img/icon_register.png" title="Créer un compte"></a></li>
-                        {% endif %}
-                    </ul>
-                </div>
+                {% if user.is_authenticated %}
+                    <a href="/account/"><img src="/static/assets/img/icon_user_loged.png" title="Mon Compte"></a>
+                    <a href="{% url 'logout' %}"><img src="/static/assets/img/icon_logout.png" title="Déconnexion"></a>
+                {% else %}
+                    <a href="{% url 'login' %}"><img src="/static/assets/img/icon_login.png" title="Connexion"></a>
+                    <a href="{% url 'signup' %}"><img src="/static/assets/img/icon_register.png" title="Créer un compte"></a>
+                {% endif %}
             </div>
         </nav>
 
-        <div>
+        <div class="container_row">
             <img id="img_traffic" src="{% static 'assets/img/traffic.png' %}"/>
         </div>
 
@@ -41,8 +36,11 @@
 
         <!-- Footer-->
         <footer>
-            <a href="mentions_legales">
+            <a href="/bestway/mentions_legales/">
                 <h3>Mentions legales</h3>
+            </a>
+            <a href="mailto:psychoid@hotmail.fr">
+                <h3>Contact</h3>
             </a>
         </footer>
 

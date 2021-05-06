@@ -1,15 +1,33 @@
 body
 {
     background-color: #c40c0c;
-}
-#img_gearwheel
-{
-    width: 10%;
-	height: 10%;
-}
-#img_traffic
-{
-    width: 20%;
-	height: 20%;
+    width: 80%;
+    padding-left: 10%;
+
 }
 
+.container_row
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}
+
+.container_column
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+footer
+{
+    display:flex;
+    justify-content: space-evenly;
+}

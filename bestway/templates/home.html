@@ -4,17 +4,21 @@
 {% block content %}
 
     <!-- Block-->
-    <div>
-        <h1>Bienvenue dans l'application BestWay !</h1>
-        <h2>Choisis ton point de départ.</h2>
-    </div>
+    <div class="container_column">
 
-    <!-- form-->
-    <form action="destinations/" method="post">
-        {% csrf_token %}
-        {{ address_form }}
-        <input type="submit" value="Valider">
-    </form>
+        <div>
+            <h1>Bienvenue dans l'application BestWay !</h1>
+            <h2>Choisis ton point de départ.</h2>
+        </div>
+
+        <!-- form-->
+        <form action="destinations/" method="post">
+            {% csrf_token %}
+            {{ address_form }}
+            <input type="submit" value="Valider">
+        </form>
+        
+    </div>
 
 {% endblock content %}
 
