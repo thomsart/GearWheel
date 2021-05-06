@@ -1,5 +1,17 @@
-<form id="form_login_register" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">valider</button>
-</form>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Block-->
+    <div class="container_column">
+
+        <form id="form_login_register" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">valider</button>
+        </form>
+
+    </div>
+
+{% endblock content %}
