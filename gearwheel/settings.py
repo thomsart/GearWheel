@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-99p(g3z_cjt2xck@ya1^mujd0mdvz^l4am)m!#nmxf$!y(%ui)'
+BESTWAY_GOOGLEMAP_KEY = os.environ['BESTWAY_GOOGLEMAP_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

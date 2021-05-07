@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import requests
-
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpRequest
