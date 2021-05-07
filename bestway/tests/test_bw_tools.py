@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*
 
 import pytest
+import requests
 
 from django.test import TestCase
 
@@ -37,11 +38,34 @@ class TestViews(TestCase):
         assert clean_address(self.symbole_string) == "'++++++++++++++++++++++++++++++++++++++++++"
         assert clean_address(self.empty_string) == ""
 
-    # def request_to_GeoApiGouvFr(self):
-    #     """
-    #         Here we test 
-    #     """
-
-    #     assert tools.put_products_in_db(self.dict_without_product) == False
-
 ################################################################################
+
+# class MockResponse():
+
+#     @staticmethod
+#     def json():
+#         return cst.JSON_TEST
+
+
+# def test_request_mediawiki_subject(monkeypatch):
+
+#     def mock_request(mock):
+#         return MockResponse()
+    
+#     monkeypatch.setattr(requests, "get", mock_request)
+
+#     mock_result = cl.RequestMediaWiki.subject("test")
+
+#     assert mock_result["batchcomplete"] == ""
+
+
+# def test_request_mediawiki_article(monkeypatch):
+
+#     def mock_request(mock):
+#         return MockResponse()
+    
+#     monkeypatch.setattr(requests, "get", mock_request)
+
+#     mock_result = cl.RequestMediaWiki.article("test")
+
+#     assert mock_result["batchcomplete"] == ""

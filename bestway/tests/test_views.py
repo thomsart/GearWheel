@@ -45,7 +45,6 @@ class TestViews(TestCase):
             is_active=True,
             )
 
-
         return super().setUp()
 
     def test_home(self):
@@ -74,8 +73,11 @@ class TestViews(TestCase):
                                     'password': 'ThePassword77+'})
         self.assertEqual(response.status_code, 302)
 
-    # def test_account(self):
-    #     pass
+    def test_account(self):
+        self.client.force_login(self.user_login)
+        response = self.client.get(reverse('account'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account.html')
 
     # def test_destinations(self):
     #     response = self.client.post(reverse('destinations'))
