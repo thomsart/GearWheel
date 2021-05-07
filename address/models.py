@@ -6,8 +6,8 @@ from bestway.models import User
 
 class Address(models.Model):
     name = models.CharField(blank=False, max_length=70)
-    longitude = models.DecimalField(blank=False, max_digits=20, decimal_places=17)
-    latitude = models.DecimalField(blank=False, max_digits=20, decimal_places=17)
+    longitude = models.FloatField(blank=False)
+    latitude = models.FloatField(blank=False)
     start = models.BooleanField(default=False)
     end = models.BooleanField(default=False)
     stop = models.BooleanField(default=False)
