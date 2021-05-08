@@ -35,11 +35,17 @@ def home(request):
         if address_form.is_valid():
             start = bw_tools.clean_address(address_form.cleaned_data['start'])
             end = bw_tools.clean_address(address_form.cleaned_data['end'])
-            print(start+'\n'+end)
-            start_json = bw_tools.request_to_GeoApiGouvFr(start)
-            end_json = bw_tools.request_to_GeoApiGouvFr(end)
-            print(start_json)
-            print(end_json)
+            start_json = bw_tools.request_to_GeoApiGouvFr(start, 'start')
+            end_json = bw_tools.request_to_GeoApiGouvFr(end, 'end')
+
+            bw_tools.create_address_object(
+                start_json,
+                User.objects.get(id=request.user.id)
+            )
+            bw_tools.create_address_object(
+                end_json,
+                User.objects.get(id=request.user.id)
+            )
 
             return redirect('destinations')
 
@@ -56,19 +62,11 @@ def destinations(request):
 
         if stops_form.is_valid():
             stop = bw_tools.clean_address(stops_form.cleaned_data['stops'])
-            print(stop)
-            stop_json = bw_tools.request_to_GeoApiGouvFr(stop)
-            print(stop_json)
-
-            logged_user_id = User.objects.filter(id=request.user.id).value('id')
-            Address.objects.create(
-                name = stop_json['address'],
-                longitude = float(stop_json['longitude']),
-                latitude = float(stop_json['latitude']),
-                start = False,
-                end = False,
-                stop = True,
-                user = logged_user_id
+            stop_json = bw_tools.request_to_GeoApiGouvFr(stop, 'stop')
+            # print(stop_json)
+            bw_tools.create_address_object(
+                stop_json,
+                User.objects.get(id=request.user.id)
             )
 
     else:
