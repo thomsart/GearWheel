@@ -77,7 +77,16 @@ def destinations(request):
 @login_required
 def result(request):
 
-    return render(request, 'result.html')
+
+    context = {
+        'start': Address.objects.filter(user=request.user.id, start=True).all(),
+        'stops': Address.objects.filter(user=request.user.id, stop=True).all(),
+        'end': Address.objects.filter(user=request.user.id, end=True).all()
+    }
+
+    print(context['start'])
+
+    return render(request, 'result.html', context)
 
 def conditions(request):
 

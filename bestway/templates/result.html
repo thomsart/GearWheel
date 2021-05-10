@@ -11,7 +11,24 @@
         </div>
 
         <div>
-            <h1>Ici le resultat !</h1>
+            <h1>Le départ</h1>
+            {% for start in start %}
+                <ul class='start'>
+                    {{ start.name }}
+                </ul>
+            {% endfor %}
+            <h1>Ensuite les arrets</h1>
+            {% for stop in stops %}
+                <ul class='stop'>
+                    {{ stop.name }}
+                </ul>
+            {% endfor %}
+            <h1>L'arrivée</h1>
+            {% for end in end %}
+                <ul class='end'>
+                    {{ end.name }}
+                </ul>
+            {% endfor %}
         </div>
         
     </div>
