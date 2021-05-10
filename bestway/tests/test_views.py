@@ -57,10 +57,10 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/signup.html')
 
-    def test_signup_success(self):
-        response = self.client.post(reverse('signup'), self.user_signup,
-                                    format='text/html')
-        self.assertEqual(response.status_code, 302)
+    # def test_signup_success(self):
+    #     response = self.client.post(reverse('signup'), self.user_signup,
+    #                                 format='text/html')
+    #     self.assertEqual(response.status_code, 302)
 
     def test_login(self):
         response = self.client.get(reverse('login'))
@@ -85,6 +85,11 @@ class TestViews(TestCase):
     #     self.assertTemplateUsed(response, 'destinations.html')
 
     # def test_result(self):
+    #     response = self.client.get(reverse('result'))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'result.html')
+
+    # def test_delete_user_addresses(self):
     #     response = self.client.get(reverse('result'))
     #     self.assertEqual(response.status_code, 200)
     #     self.assertTemplateUsed(response, 'result.html')

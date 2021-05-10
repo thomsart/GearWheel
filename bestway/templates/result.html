@@ -30,7 +30,12 @@
                 </ul>
             {% endfor %}
         </div>
-        
+
     </div>
+
+    <form action="delete_user_addresses/" method='post'>
+        {% csrf_token %}
+        <input type="submit" value="Recommence">
+    </form>
 
 {% endblock content %}

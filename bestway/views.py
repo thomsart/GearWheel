@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 
 from address.models import Address
+from address.utilities import address_tools
 from bestway.models import User
 from bestway.utilities import bw_tools
 from bestway.form import *
@@ -38,11 +39,11 @@ def home(request):
             start_json = bw_tools.request_to_GeoApiGouvFr(start, 'start')
             end_json = bw_tools.request_to_GeoApiGouvFr(end, 'end')
 
-            bw_tools.create_address_object(
+            address_tools.create_address_object(
                 start_json,
                 User.objects.get(id=request.user.id)
             )
-            bw_tools.create_address_object(
+            address_tools.create_address_object(
                 end_json,
                 User.objects.get(id=request.user.id)
             )
@@ -63,8 +64,7 @@ def destinations(request):
         if stops_form.is_valid():
             stop = bw_tools.clean_address(stops_form.cleaned_data['stops'])
             stop_json = bw_tools.request_to_GeoApiGouvFr(stop, 'stop')
-            # print(stop_json)
-            bw_tools.create_address_object(
+            address_tools.create_address_object(
                 stop_json,
                 User.objects.get(id=request.user.id)
             )
@@ -77,16 +77,21 @@ def destinations(request):
 @login_required
 def result(request):
 
-
     context = {
         'start': Address.objects.filter(user=request.user.id, start=True).all(),
         'stops': Address.objects.filter(user=request.user.id, stop=True).all(),
         'end': Address.objects.filter(user=request.user.id, end=True).all()
     }
 
-    print(context['start'])
-
     return render(request, 'result.html', context)
+
+@login_required
+def delete_user_addresses(request):
+
+    id_user = int(request.user.id)
+    if request.method == 'POST':
+        address_tools.delete_user_addresses(id_user)
+        return redirect('home')
 
 def conditions(request):
 
