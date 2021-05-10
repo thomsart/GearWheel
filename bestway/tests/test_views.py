@@ -89,6 +89,11 @@ class TestViews(TestCase):
     #     self.assertEqual(response.status_code, 200)
     #     self.assertTemplateUsed(response, 'result.html')
 
+    def test_conditions(self):
+        response = self.client.get(reverse('conditions'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'conditions.html')
+
     def test_mentions_legales(self):
         response = self.client.get(reverse('mentions_legales'))
         self.assertEqual(response.status_code, 200)

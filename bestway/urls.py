@@ -23,5 +23,6 @@ urlpatterns = [
     path('account/', views.account, name='account'),
     path('destinations/', views.destinations, name='destinations'),
     path('destinations/result/', views.result, name='result'),
+    path('conditions/', views.conditions, name='conditions'),
     path('mentions_legales/', views.mentions_legales, name='mentions_legales'),
 ]

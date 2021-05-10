@@ -79,6 +79,10 @@ def result(request):
 
     return render(request, 'result.html')
 
+def conditions(request):
+
+    return render(request, 'conditions.html')
+
 def mentions_legales(request):
 
     return render(request, 'mentions_legales.html')
