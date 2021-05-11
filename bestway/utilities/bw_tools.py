@@ -4,8 +4,6 @@
 import os
 import requests
 
-from bestway.models import User
-
 
 """
     This file contains all functions we need in the views.
