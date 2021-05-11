@@ -19,15 +19,16 @@ liste de départ.
 
 3 - On prend ensuite le premier point de la liste de départ (qui était le 4ème)
 et on réalise le cercle le plus petit ayant pour centre ce point avec le point
-de la liste obtenue grace à notre triangle. Une fois le cercle obtenue on place
+de la liste obtenue grace à notre triangle. On regarde ensuit le cercle qui est
+juste après en terme de grandeur. Une fois les cercles obtenue on place
 ce quatrième point extrait de la liste de départ pour le placer dans la liste
-de fin juste avant le point ayant servit à tracer ce cercle.
+de fin entre les deux points qui ont servis à tracer les deux cercles précédants.
 
 4 - On prend ensuite le premier point de la liste de départ (qui était le 5ème)
-pour repeter la même opération j'usqu'à épuisement des points de la liste de
+pour repeter la même opération jusqu'à épuisement des points de la liste de
 départ. On obtient donc, grâce à notre liste de fin si on traçait les
 droites qui relient dans l'ordre des points, ce polynome qui possède pour sommets
-tout les points de la liste et ayant le périmètre le plus petit.
+tout ces points de la liste et ayant le périmètre le plus petit.
 
 """
 ################################################################################
