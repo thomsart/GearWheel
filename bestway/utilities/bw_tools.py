@@ -48,6 +48,9 @@ def request_to_GeoApiGouvFr(address, nature):
     longitude = str(response.json()['features'][0]['geometry']['coordinates'][0])
     latitude = str(response.json()['features'][0]['geometry']['coordinates'][1])
 
+    print("adresse: "+address)
+    print("longitude: "+longitude+"\n"+"latitude: "+latitude)
+    
     return {
         "address": address,
         "nature": nature,

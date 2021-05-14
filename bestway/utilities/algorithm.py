@@ -100,24 +100,26 @@ def calculate_total_distance(addresses_list):
         rapport a l'adresse de départ qui a pour nouveau referentiel
         longitude = 0 et latitude = 0
     """
-    curent_ref_longitude = 0
-    curent_ref_latitude = 0
-    next_turn_ref_longitude = 0
-    next_turn_ref_latitude = 0
 
-    for addresses in addresses_list:
-        for address in addresses:
+    ref_longitude = []
+    ref_latitude = []
+
+    for addresses_block in addresses_list:
+        del ref_longitude[:]
+        del ref_latitude[:]
+        for address in addresses_block:
             if address['start'] == True:
-                curent_ref_longitude = address['longitude'] 
-                curent_ref_latitude = address['latitude']
+                ref_longitude.append(address['longitude'])
+                ref_latitude.append(address['latitude'])
             else:
-                next_turn_ref_longitude += address['longitude']
-                next_turn_ref_latitude += address['latitude']
-                address['longitude'] -= curent_ref_longitude
-                address['latitude'] -= curent_ref_latitude
+                ref_longitude.append(address['longitude'])
+                ref_latitude.append(address['latitude'])
+                address['longitude'] -= ref_longitude[-2]
+                address['latitude'] -= ref_latitude[-2]
                 address['distance'] = math.sqrt(
-                        (address['longitude']*address['longitude']) + (address['latitude']*address['latitude'])
-                    )
+                                        (address['longitude']*address['longitude']) + (address['latitude']*address['latitude'])
+                                        )
+        
 
     return addresses_list
 
