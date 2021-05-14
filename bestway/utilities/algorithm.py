@@ -93,60 +93,58 @@ def find_all_differents_ways(addresses_list, nb_of_stops):
 
 ################################################################################
 
-def change_reference_points(addresses_list):
+def calculate_total_distance(addresses_list):
 
     """
         Ensuite on change le referentiel des coordonnées de chaque adresse par
         rapport a l'adresse de départ qui a pour nouveau referentiel
         longitude = 0 et latitude = 0
     """
-    reference_longitude = 0
-    reference_latitude = 0
+    curent_ref_longitude = 0
+    curent_ref_latitude = 0
+    next_turn_ref_longitude = 0
+    next_turn_ref_latitude = 0
 
-    for address in addresses_list:
-        if address['start'] == True:
-            reference_longitude = address['longitude'] 
-            reference_latitude = address['latitude']
-
-    for address in addresses_list:
-        address['longitude'] = address['longitude'] - reference_longitude
-
-    for address in addresses_list:
-        address['latitude'] = address['latitude'] - reference_latitude
+    for addresses in addresses_list:
+        for address in addresses:
+            if address['start'] == True:
+                curent_ref_longitude = address['longitude'] 
+                curent_ref_latitude = address['latitude']
+            else:
+                next_turn_ref_longitude += address['longitude']
+                next_turn_ref_latitude += address['latitude']
+                address['longitude'] -= curent_ref_longitude
+                address['latitude'] -= curent_ref_latitude
+                address['distance'] = math.sqrt(
+                        (address['longitude']*address['longitude']) + (address['latitude']*address['latitude'])
+                    )
 
     return addresses_list
 
 ################################################################################
 
-def calculate_distance(addresses_list):
+def total_distance_for_each_way(addresses_list):
 
     """
         Maintenant on calcule les distances des address par rapport au point de
         reference voulu.
     """
-    for address in addresses_list:
-        if address['stop'] == True:
-            address['distance'] = math.sqrt(
-                (address['longitude']*address['longitude']) + (address['latitude']*address['latitude'])
-            )
+    list_for_comparison = []
 
-    return addresses_list
+    for way in addresses_list:
+        indices = {
+                "bestway": [],
+                "total_distance": 0
+            }
+        for address in way:
+            if address['start'] == True:
+                indices["bestway"].append(address['address'])
+            else:
+                indices["bestway"].append(address['address'])
+                indices["total_distance"] += address['distance']
+        list_for_comparison.append(indices)
 
-################################################################################
-
-def sorted_by_distance(addresses_list):
-
-    """
-        Maintenant on trie la list en mettant l'adresse de debut en premier
-        et les addresses de stop de la plus eloignée de l'addresse de depart
-        à l'addresse la plus proche.
-    """
-    reverse_addresses_list = sorted(
-                                addresses_list,
-                                key=lambda part: part["distance"],
-                            )
-
-    return reverse_addresses_list
+    return list_for_comparison
 
 ################################################################################
 
