@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import math
-from operator import itemgetter, attrgetter
+from itertools import permutations
 
 
 """
@@ -41,7 +41,7 @@ tout ces points de la liste et ayant le périmètre le plus petit.
 
 ################################################################################
 
-def start_list(QuerySet):
+def addresses_list(QuerySet):
 
     """
         Aller chercher toutes les addresses d'un user et les mettre dans une liste
@@ -54,22 +54,46 @@ def start_list(QuerySet):
                 "address": user_address['name'],
                 "start": user_address['start'],
                 "stop": user_address['stop'],
+                "end": user_address['end'],
                 "distance": 0,
                 "longitude": user_address['longitude'],
                 "latitude": user_address['latitude']
         }
 
-        start_list = list_of_addresses.append(address)
-    
-    for address in list_of_addresses:
-        if address['start'] == False and address['stop'] == False:
-            list_of_addresses.remove(address)
+        list_of_addresses.append(address)
 
     return list_of_addresses
 
 ################################################################################
 
-def change_reference_points(start_list):
+def find_all_differents_ways(addresses_list, nb_of_stops):
+
+    start_address = [start_address for start_address in addresses_list if start_address['start']==True]
+    end_address = [end_address for end_address in addresses_list if end_address['end']==True]
+
+    for address in addresses_list:
+        if address['start'] == True:
+            addresses_list.remove(address)
+    for address in addresses_list:
+        if address['end'] == True:
+            addresses_list.remove(address)
+
+    all_permutations = [permutation for permutation in permutations(addresses_list, nb_of_stops)]
+
+    all_combinations = []
+    for permutation in all_permutations:
+        permutation = list(permutation)
+        all_combinations.append(permutation)
+
+    for combination in all_combinations:
+        combination.insert(0, start_address[0])
+        combination.append(end_address[0])
+
+    return all_combinations
+
+################################################################################
+
+def change_reference_points(addresses_list):
 
     """
         Ensuite on change le referentiel des coordonnées de chaque adresse par
@@ -79,59 +103,50 @@ def change_reference_points(start_list):
     reference_longitude = 0
     reference_latitude = 0
 
-    for address in start_list:
+    for address in addresses_list:
         if address['start'] == True:
             reference_longitude = address['longitude'] 
             reference_latitude = address['latitude']
 
-    for address in start_list:
+    for address in addresses_list:
         address['longitude'] = address['longitude'] - reference_longitude
 
-    for address in start_list:
+    for address in addresses_list:
         address['latitude'] = address['latitude'] - reference_latitude
 
-    return start_list
+    return addresses_list
 
 ################################################################################
 
-def calculate_distance(start_list):
+def calculate_distance(addresses_list):
 
     """
         Maintenant on calcule les distances des address par rapport au point de
         reference voulu.
     """
-    for address in start_list:
+    for address in addresses_list:
         if address['stop'] == True:
             address['distance'] = math.sqrt(
                 (address['longitude']*address['longitude']) + (address['latitude']*address['latitude'])
             )
 
-    return start_list
+    return addresses_list
 
 ################################################################################
 
-def sorted_start_list(start_list):
+def sorted_by_distance(addresses_list):
 
     """
         Maintenant on trie la list en mettant l'adresse de debut en premier
-        l'addresse de fin en dernier et entre les addresses de stop de la
-        plus eloignée de l'addresse de depart a l'addresse la plus proche
+        et les addresses de stop de la plus eloignée de l'addresse de depart
+        à l'addresse la plus proche.
     """
-    the_start_place = start_list[0]
-    reverse_start_list = sorted(start_list, key=lambda part: part["distance"], reverse=True)
-    reverse_start_list.pop(-1)
-    reverse_start_list.insert(0, the_start_place)
+    reverse_addresses_list = sorted(
+                                addresses_list,
+                                key=lambda part: part["distance"],
+                            )
 
-    return reverse_start_list
+    return reverse_addresses_list
 
+################################################################################
 
-
-
-
-
-# 3 On calcule donc les distances absolue entre tout les points par rapport a l'addresse de départ grace a Pythagore
-# on creer donc une fonction qui vas se charger de changer le referentiel que l'on va reutiliser a chaque fois fois
-
-# 4 On les tris de la plus grande a la plus petite en commencant par mettre l'adresse de depart le tout dans une liste
-
-# 5 on peut maintenant commencer notre algo decrit plus haut
