@@ -63,7 +63,7 @@ def find_all_differents_ways(addresses_list, nb_of_stops):
 
 ################################################################################
 
-def calculate_total_distance(addresses_list):
+def take_all_longitude_and_latitude(addresses_list):
 
     """
         Ensuite on change le referentiel des coordonnées de chaque adresse par
@@ -71,49 +71,57 @@ def calculate_total_distance(addresses_list):
         longitude = 0 et latitude = 0
     """
 
-    original_addresses_list = addresses_list.copy()
+    longitude = []
+    latitude = []
+    longitude2 = []
+    latitude2 = []
+
+    original_addresses_list = addresses_list
 
     for original_way in original_addresses_list:
-        ref_longitude = 0
-        ref_latitude = 0
         way_indice = original_addresses_list.index(original_way)
-        for address in original_way:
-            ref_longitude = address['longitude']
-            ref_latitude = address['latitude']
+        for original_address in original_way:
+            original_address_indice = original_way.index(original_address)
+            longitude.append(original_address['longitude'])
+            latitude.append(original_address['latitude'])
 
             for way in addresses_list:
                 if addresses_list.index(way) == way_indice:
                     for address in way:
-                        if address['start'] == False:
-                            address['longitude'] -= ref_longitude
-                            address['latitude'] -= ref_latitude
-                            address['distance'] = math.sqrt(
-                                                    (address['longitude']*address['longitude']) + (address['latitude']*address['latitude'])
-                                                    )
+                        if way.index(address) == original_address_indice + 1 :
+                            longitude2.append(address['longitude'])
+                            latitude2.append(address['latitude'])
+                            if address['end'] == True:
+                                longitude.append("LONG")
+                                longitude2.append("LONG2")
+                                latitude.append("LAT")
+                                latitude2.append("LAT2")
 
-    return addresses_list
+    return [longitude, longitude2, latitude, latitude2]
+
 ################################################################################
 
-def total_distance_for_each_way(addresses_list):
+def total_distance_for_each_way(addresses_list, coordinates):
 
     """
         Maintenant on calcule les distances des address par rapport au point de
         reference voulu.
     """
+    coordinates
     list_for_comparison = []
 
     for way in addresses_list:
         indices = {
                 "bestway": [],
-                "total_distance": 0
+                "total_distance": []
             }
         for address in way:
             if address['start'] == True:
                 indices["bestway"].append(address['address'])
             else:
                 indices["bestway"].append(address['address'])
-                indices["total_distance"] += address['distance']
-        list_for_comparison.append(indices)
+                indices["total_distance"].append(address['distance'])
+            list_for_comparison.append(indices)
 
     return list_for_comparison
 
