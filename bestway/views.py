@@ -11,9 +11,10 @@ from django.contrib.auth.decorators import login_required
 from address.models import Address
 from address.utilities import address_tools
 from bestway.models import User
-from bestway.utilities import bw_tools
+from bestway.utilities import bw_tools, algorithm
 from bestway.form import *
 
+from itertools import permutations
 # Create your views here.
 
 class SignUpView(CreateView):
@@ -77,13 +78,62 @@ def destinations(request):
 @login_required
 def result(request):
 
-    context = {
-        'start': Address.objects.filter(user=request.user.id, start=True).all(),
-        'stops': Address.objects.filter(user=request.user.id, stop=True).all(),
-        'end': Address.objects.filter(user=request.user.id, end=True).all()
-    }
+    id_user = int(request.user.id)
+    list_of_addresses = Address.objects.filter(user_id=id_user).values()
+    list_of_addresses = algorithm.addresses_list(list_of_addresses)
+    ways = algorithm.find_all_differents_ways(list_of_addresses, len(list_of_addresses)-2)
 
-    return render(request, 'result.html', context)
+    mirrors_ways = []
+    mirrors_ways.append(ways)
+    mirrors_ways.append(ways)
+
+    for mirror in mirrors_ways:
+        for list_of_ways in mirror:
+            for addresses in list_of_ways:
+                address = {
+                    "address": addresses,
+                    "nature": "start",
+                    "longitude": 0,
+                    "latitude": 0,
+                    "distance": 0
+                }
+
+    # list_of_ways_of_address = [
+    #     [
+    #         [
+    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
+    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
+    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
+    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
+    #         ],
+    #         [
+    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
+    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
+    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
+    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
+    #         ]
+    #     ],
+    #     [
+    #         [
+    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
+    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
+    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
+    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
+    #         ],
+    #         [
+    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
+    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
+    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
+    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
+    #         ]
+    #     ]
+    # ]
+
+    # shortest_way = algorithm.calculate_distances(ways)
+
+    # shortest_way  = algorithm.find_the_bestway(shortest_way)
+
+    return render(request, 'result.html')
 
 @login_required
 def delete_user_addresses(request):
