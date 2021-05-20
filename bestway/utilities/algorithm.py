@@ -48,7 +48,7 @@ def find_all_differents_ways(addresses_list, nb_of_stops):
             del addresses_list[index]
 
     all_permutations = [permutation for permutation in permutations(addresses_list, nb_of_stops)]
-    
+
     all_combinations = []
     for permutation in all_permutations:
         permutation = list(permutation)
@@ -59,24 +59,6 @@ def find_all_differents_ways(addresses_list, nb_of_stops):
         combination.append(end_address[0])
 
     return all_combinations
-
-################################################################################
-
-def instance_two_times_all_ways_list(all_combinations):
-
-    all_combinations
-
-    object = {
-        "address": "",
-        "nature": "start",
-        "longitude": 0,
-        "latitude": 0,
-        "distance": 0
-    }
-
-    # instancier ici la liste deux fois
-
-    return [[[object, object], [object, object]], [[object, object], [object, object]]]
 
 ################################################################################
 
@@ -95,17 +77,17 @@ def calculate_distances(twins_of_all_ways):
                 continue
             else:
                 index_address = each_way.index(each_address)
-                each_address["distance"] = math.sqrt(
+                each_address['distance'] = math.sqrt(
                     (
-                        (each_address['long'] - (list_of_ways_twin[index_way][index_address - 1]['long']))
+                        (each_address['longitude'] - (list_of_ways_twin[index_way][index_address - 1]['longitude']))
                             *
-                        (each_address['long'] - (list_of_ways_twin[index_way][index_address - 1]['long']))
+                        (each_address['longitude'] - (list_of_ways_twin[index_way][index_address - 1]['longitude']))
                     )
                         +
                     (
-                        (each_address['lat'] - list_of_ways_twin[index_way][index_address - 1]['lat'])
+                        (each_address['latitude'] - list_of_ways_twin[index_way][index_address - 1]['latitude'])
                             *
-                        (each_address['lat'] - list_of_ways_twin[index_way][index_address - 1]['lat'])
+                        (each_address['latitude'] - list_of_ways_twin[index_way][index_address - 1]['latitude'])
                     )
                 )
 
@@ -120,8 +102,7 @@ def find_the_bestway(list_of_ways_with_distances):
         reference voulu.
     """
 
-    the_bestway_way = []
-
+    all_differents_ways = []
     for way in list_of_ways_with_distances:
         result = {
             'way': [],
@@ -130,9 +111,17 @@ def find_the_bestway(list_of_ways_with_distances):
         for address in way:
             result['way'].append(address['address'])
             result['total_distance'] += address["distance"]
+        all_differents_ways.append(result)
 
-        the_bestway_way.append(result)
+    indice = []
+    for ways in all_differents_ways:
+        indice.append(ways['total_distance'])
+    distance_min = min(indice)
+    the_bestway = []
+    for way in all_differents_ways:
+        if way['total_distance'] == distance_min:
+            the_bestway.append(way['way'])
 
-    return the_bestway_way
+    return the_bestway[0]
 
 ################################################################################

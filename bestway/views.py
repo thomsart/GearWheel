@@ -90,50 +90,52 @@ def result(request):
     for mirror in mirrors_ways:
         for list_of_ways in mirror:
             for addresses in list_of_ways:
-                address = {
-                    "address": addresses,
-                    "nature": "start",
-                    "longitude": 0,
-                    "latitude": 0,
-                    "distance": 0
-                }
+                index = list_of_ways.index(addresses)
+                for key, value in addresses.items():
+                    if key == 'start' and value == True:
+                        address_object = Address.objects.get(name=addresses['address'], start=True)
+                        address = {
+                            "address": address_object.name,
+                            "nature": 'start',
+                            "longitude": address_object.longitude,
+                            "latitude": address_object.latitude,
+                            "distance": 0
+                        }
+                        list_of_ways[index] = address
 
-    # list_of_ways_of_address = [
-    #     [
-    #         [
-    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
-    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
-    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
-    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
-    #         ],
-    #         [
-    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
-    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
-    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
-    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
-    #         ]
-    #     ],
-    #     [
-    #         [
-    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
-    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
-    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
-    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
-    #         ],
-    #         [
-    #             {'address': 'départ', 'nature': 'start', 'long': 30, 'lat': 50, "distance": 0},
-    #             {'address': 'pointB', 'nature': 'stop', 'long': 20, 'lat': 70, "distance": 0},
-    #             {'address': 'pointA', 'nature': 'stop', 'long': 30, 'lat': 80, "distance": 0},
-    #             {'address': 'arrivée', 'nature': 'end', 'long': 10, 'lat': 40, "distance": 0}
-    #         ]
-    #     ]
-    # ]
+                    elif key == 'end' and value == True:
+                        address_object = Address.objects.get(name=addresses['address'], end=True)
+                        address = {
+                            "address": address_object.name,
+                            "nature": 'end',
+                            "longitude": address_object.longitude,
+                            "latitude": address_object.latitude,
+                            "distance": 0
+                        }
+                        list_of_ways[index] = address
 
-    # shortest_way = algorithm.calculate_distances(ways)
+                    else:
+                        address_object = Address.objects.get(name=addresses['address'])
+                        address = {
+                            "address": address_object.name,
+                            "nature": 'stop',
+                            "longitude": address_object.longitude,
+                            "latitude": address_object.latitude,
+                            "distance": 0
+                        }
+                        list_of_ways[index] = address
 
-    # shortest_way  = algorithm.find_the_bestway(shortest_way)
+    all_ways = algorithm.calculate_distances(mirrors_ways)
 
-    return render(request, 'result.html')
+    the_bestway = algorithm.find_the_bestway(all_ways)
+    print(the_bestway)
+
+    return render(request, 'result.html', {
+        'start': [the_bestway[0]],
+        'stops': the_bestway[1:-1],
+        'end': [the_bestway[-1]]
+        }
+    )
 
 @login_required
 def delete_user_addresses(request):
