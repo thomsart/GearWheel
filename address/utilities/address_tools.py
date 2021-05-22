@@ -19,7 +19,7 @@ def create_address_object(json_address, user_logged_id):
         a stop.
     """
 
-    if json_address['nature']=='start':
+    if json_address['nature'] =='start':
         Address.objects.create(
                     name = json_address['address'],
                     longitude = float(json_address['longitude']),
@@ -30,7 +30,7 @@ def create_address_object(json_address, user_logged_id):
                     user = user_logged_id
                 )
 
-    elif json_address['nature']=='end':
+    elif json_address['nature'] =='end':
         Address.objects.create(
                     name = json_address['address'],
                     longitude = float(json_address['longitude']),
@@ -41,7 +41,7 @@ def create_address_object(json_address, user_logged_id):
                     user = user_logged_id
                 )
 
-    elif json_address['nature']=='stop':
+    elif json_address['nature'] =='stop':
         Address.objects.create(
                     name = json_address['address'],
                     longitude = float(json_address['longitude']),

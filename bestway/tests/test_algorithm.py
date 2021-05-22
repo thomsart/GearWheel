@@ -51,21 +51,21 @@ class TestViews(TestCase):
                     {'address': '11 Rue du Maine 75014 Paris', 'nature': 'stop', 'longitude': 2.322771, 'latitude': 48.840555, 'distance': 0}, 
                     {'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 'nature': 'stop', 'longitude': 2.383188, 'latitude': 48.850161, 'distance': 0},  
                     {'address': 'Rue de Paris 77140 Nemours', 'nature': 'end', 'longitude': 2.693246, 'latitude': 48.26716, 'distance': 0}
-                ],  
+                ],
                 [
                     {'address': '25 Rue de la Croix Blanche 77570 Bougligny', 'nature': 'start', 'longitude': 2.658703, 'latitude': 48.198482, 'distance': 0}, 
                     {'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 'nature': 'stop', 'longitude': 2.383188, 'latitude': 48.850161, 'distance': 0}, 
                     {'address': '11 Rue du Maine 75014 Paris', 'nature': 'stop', 'longitude': 2.322771, 'latitude': 48.840555, 'distance': 0},  
                     {'address': 'Rue de Paris 77140 Nemours', 'nature': 'end', 'longitude': 2.693246, 'latitude': 48.26716, 'distance': 0}
-                ],  
-            ], 
+                ],
+            ],
             [
                 [
                     {'address': '25 Rue de la Croix Blanche 77570 Bougligny', 'nature': 'start', 'longitude': 2.658703, 'latitude': 48.198482, 'distance': 0}, 
                     {'address': '11 Rue du Maine 75014 Paris', 'nature': 'stop', 'longitude': 2.322771, 'latitude': 48.840555, 'distance': 0}, 
                     {'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 'nature': 'stop', 'longitude': 2.383188, 'latitude': 48.850161, 'distance': 0},  
                     {'address': 'Rue de Paris 77140 Nemours', 'nature': 'end', 'longitude': 2.693246, 'latitude': 48.26716, 'distance': 0}
-                ],  
+                ],
                 [
                     {'address': '25 Rue de la Croix Blanche 77570 Bougligny', 'nature': 'start', 'longitude': 2.658703, 'latitude': 48.198482, 'distance': 0}, 
                     {'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 'nature': 'stop', 'longitude': 2.383188, 'latitude': 48.850161, 'distance': 0}, 
@@ -81,7 +81,7 @@ class TestViews(TestCase):
                 {'address': '11 Rue du Maine 75014 Paris', 'nature': 'stop', 'longitude': 2.322771, 'latitude': 48.840555, 'distance': 0.7246433922647777}, 
                 {'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 'nature': 'stop', 'longitude': 2.383188, 'latitude': 48.850161, 'distance': 0.061175886793735826}, 
                 {'address': 'Rue de Paris 77140 Nemours', 'nature': 'end', 'longitude': 2.693246, 'latitude': 48.26716, 'distance': 0.6603227463634759}
-            ], 
+            ],
             [
                 {'address': '25 Rue de la Croix Blanche 77570 Bougligny', 'nature': 'start', 'longitude': 2.658703, 'latitude': 48.198482, 'distance': 0}, 
                 {'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 'nature': 'stop', 'longitude': 2.383188, 'latitude': 48.850161, 'distance': 0.7075267021575947}, 

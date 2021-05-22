@@ -128,7 +128,6 @@ def result(request):
     all_ways = algorithm.calculate_distances(mirrors_ways)
 
     the_bestway = algorithm.find_the_bestway(all_ways)
-    print(the_bestway)
 
     return render(request, 'result.html', {
         'start': [the_bestway[0]],
