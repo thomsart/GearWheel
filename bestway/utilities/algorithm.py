@@ -15,7 +15,6 @@ def addresses_list(QuerySet):
 
     """
         Aller chercher toutes les addresses d'un user et les mettre dans une liste
-        'start_list'
     """
     list_of_addresses = []
 
