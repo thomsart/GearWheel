@@ -51,9 +51,9 @@ def create_address_object(json_address, user_logged_id):
                     stop = True,
                     user = user_logged_id
                 )
-
+    
     else:
-        return print("Il faut renseigner la nature du trajet : 'start', 'end' ou 'stop'")
+        return print("Problème de création d'objet address")
 
 ################################################################################
 
