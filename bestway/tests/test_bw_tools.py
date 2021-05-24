@@ -37,35 +37,3 @@ class TestViews(TestCase):
         assert clean_address(self.upper_string) == "186+rue+du+faubourg+saint+antoine+75012+paris"
         assert clean_address(self.symbole_string) == "'++++++++++++++++++++++++++++++++++++++++++"
         assert clean_address(self.empty_string) == ""
-
-################################################################################
-
-# class MockResponse():
-
-#     @staticmethod
-#     def json():
-#         return cst.JSON_TEST
-
-
-# def test_request_mediawiki_subject(monkeypatch):
-
-#     def mock_request(mock):
-#         return MockResponse()
-    
-#     monkeypatch.setattr(requests, "get", mock_request)
-
-#     mock_result = cl.RequestMediaWiki.subject("test")
-
-#     assert mock_result["batchcomplete"] == ""
-
-
-# def test_request_mediawiki_article(monkeypatch):
-
-#     def mock_request(mock):
-#         return MockResponse()
-    
-#     monkeypatch.setattr(requests, "get", mock_request)
-
-#     mock_result = cl.RequestMediaWiki.article("test")
-
-#     assert mock_result["batchcomplete"] == ""
