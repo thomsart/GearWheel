@@ -10,6 +10,7 @@ from bestway.utilities.algorithm import *
 """
     This file contains all tests of the functions in algorithm.py.
 """
+
 ################################################################################
 #####                               Tests                                  #####
 ################################################################################
@@ -17,7 +18,9 @@ from bestway.utilities.algorithm import *
 class TestViews(TestCase):
 
     def  setUp(self):
-        """ We defined here all the datas we need to do our tests. """
+        """
+            We defined here all the variables we need to do our tests.
+        """
 
         self.good_queryset = [
             {'id': 23, 'name': 'départ', 'longitude': 30, 'latitude': 50, 'start': True, 'end': False, 'stop': False, 'user_id': 1},
@@ -94,7 +97,8 @@ class TestViews(TestCase):
 
     def test_addresses_list(self):
         """
-            Here we test
+            Here we test that we get all these results with those kind of
+            querysets.
         """
         assert addresses_list(self.good_queryset) == [
             {'address': 'départ', 'start': True, 'stop': False, 'end': False},
@@ -109,11 +113,15 @@ class TestViews(TestCase):
             {'address': 'départ', 'start': True, 'stop': False, 'end': False},
         ]
 
+################################################################################
+
     def test_find_all_differents_ways(self):
         """
-            Here we test
+            Here we test that we get all these combinations with these differents
+            list of addresses.
         """
-        assert find_all_differents_ways(self.good_addresses_list, len(self.good_addresses_list)-2) == [
+        assert find_all_differents_ways(
+            self.good_addresses_list, len(self.good_addresses_list)-2 ) == [
             [
                 {'address': 'départ', 'start': True, 'stop': False, 'end': False}, 
                 {'address': 'pointA', 'start': False, 'stop': True, 'end': False}, 
@@ -127,7 +135,8 @@ class TestViews(TestCase):
                 {'address': 'arrivée', 'start': False, 'stop': False, 'end': True}
             ]
         ]
-        assert find_all_differents_ways(self.bad_addresses_list, len(self.bad_addresses_list)-2) == [
+        assert find_all_differents_ways(
+            self.bad_addresses_list, len(self.bad_addresses_list)-2) == [
             [
                 {'address': 'départ', 'start': True, 'stop': False, 'end': False}, 
                 {'address': 'pointA', 'start': False, 'stop': True, 'end': False}, 
@@ -142,9 +151,12 @@ class TestViews(TestCase):
             ]
         ]
 
+################################################################################
+
     def test_calculate_distances(self):
         """
-            Here we test
+            Here we test that this fonctions gives the distances we expect to get
+            in function of the set of list we give as argument. 
         """
         assert calculate_distances(self.twins_of_ways) == [
             [
@@ -160,10 +172,13 @@ class TestViews(TestCase):
                 {'address': 'Rue de Paris 77140 Nemours', 'nature': 'end', 'longitude': 2.693246, 'latitude': 48.26716, 'distance': 0.6826665010457197}
             ]
         ]
-    
+
+################################################################################
+
     def test_find_the_bestway(self):
         """
-            Here we test
+            Here we check if the function give well the shortest way and not an
+            other.
         """
         assert find_the_bestway(self.list_of_ways_with_distances) == [
             '25 Rue de la Croix Blanche 77570 Bougligny', 

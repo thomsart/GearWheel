@@ -4,16 +4,17 @@
 from address.models import Address
 
 """
-    This file contains all functions we need in the views.
+    This file contains all functions we need in the views to create address
+    objects.
 """
+
 ################################################################################
 #####                               Tools                                  #####
 ################################################################################
 
 def create_address_object(json_address, user_logged_id):
-
     """
-        This function will create the address object for the user how is logged
+        This function will create the address object for the logged user
         in order to take it later to make our calculation of the shotest way.
         We just precise in argument if the address is the start, the end or just
         a stop.

@@ -5,16 +5,19 @@ import math
 from itertools import permutations
 
 """
-
+    This module contains the functions we need to calculate the shortest way. 
 """
 
 ################################################################################
+#####                            Algorithm                                 #####
+################################################################################
 
 def addresses_list(QuerySet):
+    """
+        This function takes all the addresses that the user saved to make them
+        in a list, in first place, that this function returns.
+    """
 
-    """
-        Aller chercher toutes les addresses d'un user et les mettre dans une liste
-    """
     list_of_addresses = []
 
     for user_address in QuerySet:
@@ -32,9 +35,21 @@ def addresses_list(QuerySet):
 ################################################################################
 
 def find_all_differents_ways(addresses_list, nb_of_stops):
+    """
+        Them this function takes the start address and the final address to put
+        them in the begining and the end of each differents combinations and them
+        find all the differentes combinations we can get with all the stops the
+        user saved. This function return all the differente combination in a list. 
+    """
 
-    start_address = [start_address for start_address in addresses_list if start_address['start']==True]
-    end_address = [end_address for end_address in addresses_list if end_address['end']==True]
+    start_address = [
+        start_address for start_address in addresses_list 
+        if start_address['start'] == True
+    ]
+    end_address = [
+        end_address for end_address in addresses_list 
+        if end_address['end'] == True
+    ]
 
     for address in addresses_list:
         if address['start'] == True:
@@ -45,7 +60,11 @@ def find_all_differents_ways(addresses_list, nb_of_stops):
             index = addresses_list.index(address)
             del addresses_list[index]
 
-    all_permutations = [permutation for permutation in permutations(addresses_list, nb_of_stops)]
+    all_permutations = [
+        permutation for permutation in permutations(
+            addresses_list, nb_of_stops
+        )
+    ]
 
     all_combinations = []
     for permutation in all_permutations:
@@ -61,10 +80,20 @@ def find_all_differents_ways(addresses_list, nb_of_stops):
 ################################################################################
 
 def calculate_distances(twins_of_all_ways):
+    """
+        Now we use this function to calculate all the distances from an address
+        to an other in making a mirror of the list we got from the previews
+        function. The idea is to substract the longitude and latitudes of the
+        first list in taking these same parameters of the preview address in the
+        mirrors list. To calculate the distance between to addresses the idea is
+        in fact to substract the longitude and latitude of the preview address to
+        obtain a rectangle triangle and be able to calculate the hypotenuse which
+        is actually the distance between to addresses. In substracting the
+        longitude and latitude we put the references of the second address in
+        zero. This function return the first list of thes twins of list with all
+        distances we need.
+    """
 
-    """
-        
-    """
     list_of_ways = twins_of_all_ways[0]
     list_of_ways_twin = twins_of_all_ways[1]
 
@@ -94,10 +123,12 @@ def calculate_distances(twins_of_all_ways):
 ################################################################################
 
 def find_the_bestway(list_of_ways_with_distances):
-
     """
-        Maintenant on calcule les distances des address par rapport au point de
-        reference voulu.
+        Now that we get all distances between addresses we can thanks to this
+        function simply additionate them and put the result in a dictionnary.
+        We associate in each dictionnary the way and its totale distance.
+        Once  we get all ways and their total distance we pick-up the shortest
+        one to return it.
     """
 
     all_differents_ways = []
@@ -121,5 +152,3 @@ def find_the_bestway(list_of_ways_with_distances):
             the_bestway.append(way['way'])
 
     return the_bestway[0]
-
-################################################################################

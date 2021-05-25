@@ -3,7 +3,6 @@
 
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.http import HttpRequest
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -14,11 +13,9 @@ from bestway.models import User
 from bestway.utilities import bw_tools, algorithm
 from bestway.form import *
 
-from itertools import permutations
-
 
 """
-
+    This module contains all the views of the Bestway application.
 """
 
 ################################################################################
@@ -34,16 +31,21 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
+################################################################################
+
 @login_required
 def account(request):
     """
-        This view allows the user to login or create an account.
+        This view allows the user to see the details of his account.
     """
     return render(request, 'account.html')
 
+################################################################################
+
 def home(request):
     """
-        This view allows the user to login or create an account.
+        This view is the home page of the Bestway application. We generate the
+        forms we need to save the start and the end addresses.
     """
     if request.method == 'POST':
         address_form = AddressForm(request.POST)
@@ -73,10 +75,15 @@ def home(request):
 
     return render(request, 'home.html', {"address_form": address_form})
 
+################################################################################
+
 @login_required
 def destinations(request):
     """
-        This view allows the user to login or create an account.
+        This view generate the form we need to save all the stops the user has
+        to do during the day. We make sure that he doesn't save two times the
+        same addresses wich it would be unusefull and also that he cannot save
+        more than 5 stops which represents already 120 differents ways.
     """
     if request.method == 'POST':
         stops_form = StopsForm(request.POST)
@@ -99,10 +106,16 @@ def destinations(request):
 
     return render(request, 'destinations.html', {"stops_form": stops_form})
 
+################################################################################
+
 @login_required
 def result(request):
     """
-        This view allows the user to login or create an account.
+        This view calculate the Bestway and put it in the template used for.
+        We create objects to separate the values of longitude and latitude in each
+        addresses iin the list to not get problems when we substract values.
+        We delete all the addresses in the database after the result is display
+        in the template.
     """
     id_user = int(request.user.id)
     list_of_addresses = Address.objects.filter(user_id=id_user).values()
@@ -148,8 +161,8 @@ def result(request):
 
                     elif key == 'stop' and value == True:
                         address_object = Address.objects.get(
-                                            name=addresses['address'], stop=True
-                                        )
+                            name=addresses['address'], stop=True
+                        )
                         address = {
                             "address": address_object.name,
                             "nature": 'stop',
@@ -172,14 +185,19 @@ def result(request):
         }
     )
 
+################################################################################
+
 def conditions(request):
     """
-        This view allows the user to login or create an account.
+        This view is used to publish the using-conditions and polities of
+        the Bestway application.
     """
     return render(request, 'conditions.html')
 
+################################################################################
+
 def mentions_legales(request):
     """
-        This view allows the user to login or create an account.
+        This view is used to publish the legal-mentions of the Bestway application.
     """
     return render(request, 'mentions_legales.html')

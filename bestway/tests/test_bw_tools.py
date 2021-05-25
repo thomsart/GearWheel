@@ -9,8 +9,9 @@ from django.test import TestCase
 from bestway.utilities.bw_tools import * 
 
 """
-    This file contains all tests of the functions in bw_tools.py.
+    This file contains the test of the bw_tool.py.
 """
+
 ################################################################################
 #####                               Tests                                  #####
 ################################################################################
@@ -18,7 +19,9 @@ from bestway.utilities.bw_tools import *
 class TestViews(TestCase):
 
     def  setUp(self):
-        """ We defined here all the datas we need to do our tests. """
+        """
+            We create the differents variables we need to our test.
+        """
 
         self.good_string = "186 rue du Faubourg Saint Antoine 75012 Paris"
 
@@ -30,7 +33,8 @@ class TestViews(TestCase):
 
     def test_clean_address(self):
         """
-            Here we test
+            Here we try to cover all differents cases of entry-texts we can get and make sure to
+            obtain all those expected results to make the request to the API a success.
         """
 
         assert clean_address(self.good_string) == "186+rue+du+faubourg+saint+antoine+75012+paris"

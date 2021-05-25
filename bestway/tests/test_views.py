@@ -9,7 +9,6 @@ from django.urls import reverse
 from bestway.models import User
 from address.models import Address
 
-
 """
     In this file we test all our views in the 'bestway' application in asserting
     of the used templates, the requests code or the urls redirections.
@@ -22,9 +21,9 @@ from address.models import Address
 class TestViews(TestCase):
 
     def setUp(self):
-        """ We defined here all the datas we create to do our tests. """
-
-        #self.csrf_client = Client(enforce_csrf_checks=True)
+        """
+            We create all the variables we need to do our tests.
+        """
 
         self.client = Client()
 
@@ -68,62 +67,130 @@ class TestViews(TestCase):
 
         return super().setUp()
 
+################################################################################
+
     def test_home(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server.
+        """
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
 
+################################################################################
+
     def test_signup(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server.
+        """
         response = self.client.get(reverse('signup'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/signup.html')
 
+################################################################################
+
     def test_signup_success(self):
+        """
+            We make sure that the status code is 302 when the user signup.
+        """
         response = self.client.post(reverse('signup'), self.user_signup,
                                     format='text/html')
         self.assertEqual(response.status_code, 302)
 
+################################################################################
+
     def test_login(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server.
+        """
+    
         response = self.client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/login.html')
 
+################################################################################
+
     def test_login_success(self):
+        """
+            We make sure that the status code is 302 when the logging is a
+            success.
+        """
         response = self.client.post(reverse('login'),
                                     {'username': 'Jojo',
                                     'password': 'ThePassword77+'})
         self.assertEqual(response.status_code, 302)
 
+################################################################################
+
     def test_account(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server when the user is logged.
+        """
         self.client.force_login(self.user_login)
         response = self.client.get(reverse('account'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'account.html')
 
+################################################################################
+
     def test_destinations(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server when the user is logged.
+        """
         self.client.force_login(self.user_login)
         response = self.client.get(reverse('destinations'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'destinations.html')
 
+################################################################################
+
     def test_result(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server when the user is logged.
+        """
         self.client.force_login(self.user_login)
         response = self.client.get(reverse('result'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'result.html')
+
+################################################################################
 
     def test_delete_user_addresses(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server when the user is logged.
+        """
         self.client.force_login(self.user_login)
         response = self.client.get(reverse('result'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'result.html')
 
+################################################################################
+
     def test_conditions(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server.
+        """
         response = self.client.get(reverse('conditions'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'conditions.html')
 
+################################################################################
+
     def test_mentions_legales(self):
+        """
+            We make sure that the status code is 200 and that this template is
+            used in the response from our server.
+        """
         response = self.client.get(reverse('mentions_legales'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'mentions_legales.html')
+
+################################################################################

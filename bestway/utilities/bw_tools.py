@@ -6,16 +6,17 @@ import requests
 
 
 """
-    This file contains all functions we need in the views.
+    This module contains the functions we need to treat the text from the form
+    to the request in the GeoAPIGouv API to get the parameters of the addresses. 
 """
+
 ################################################################################
 #####                               Tools                                  #####
 ################################################################################
 
 def clean_address(address):
-
     """
-        This function formate the address that the user enter in the form in
+        This function formate the address that the user enter in the forms in
         oder to make the requests success in the API. 
     """
     caracters_to_keep = [
@@ -35,7 +36,6 @@ def clean_address(address):
 ################################################################################
 
 def request_to_GeoApiGouvFr(address, nature):
-
     """
         This function will request to 'https://geo.api.gouv.fr/adresse',
         in order to get the good syntaxe of the address and its coorinates.
@@ -54,11 +54,5 @@ def request_to_GeoApiGouvFr(address, nature):
         "longitude": longitude,
         "latitude": latitude
     }
-
-################################################################################
-
-def check_if_request_is_good():
-
-    pass
 
 ################################################################################

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*
 
 import pytest
-
 import requests
 
 from django.test import TestCase
@@ -13,6 +12,7 @@ from address.utilities.address_tools import *
 """
     This file contains all tests of the functions in address_tools.py.
 """
+
 ################################################################################
 #####                               Tests                                  #####
 ################################################################################
@@ -20,7 +20,9 @@ from address.utilities.address_tools import *
 class TestViews(TestCase):
 
     def  setUp(self):
-        """ We defined here all the datas we need to do our tests. """
+        """
+            We defined here all the variables we need to do our tests.
+        """
 
         self.user_login = User.objects._create_user(
             username='Ozzy',
@@ -53,9 +55,12 @@ class TestViews(TestCase):
             'latitude': '48.850161'
         }
 
+################################################################################
+
     def test_create_address_object(self):
         """
-            Here we test
+            Here we test that the creation of the three addresses works in using
+            the function create_address_object().
         """
         create_address_object(self.start_address, self.user_login)
         create_address_object(self.end_address, self.user_login)
@@ -64,3 +69,4 @@ class TestViews(TestCase):
 
         assert new_addresses_in_db == 3
 
+################################################################################
