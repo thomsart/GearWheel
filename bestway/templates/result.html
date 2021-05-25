@@ -22,6 +22,10 @@
                 <ul class='stop'>
                     {{ stop }}
                 </ul>
+            {% empty %}
+                <ul class='stop'>
+                    <p>Tu n'as choisis aucun arrêt</p>
+                </ul>
             {% endfor %}
             <h1>L'arrivée</h1>
             {% for end in end %}
@@ -33,7 +37,7 @@
 
     </div>
 
-    <form action="delete_user_addresses/" method='post'>
+    <form action="/bestway/" method='get'>
         {% csrf_token %}
         <input type="submit" value="Recommence">
     </form>

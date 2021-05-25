@@ -63,12 +63,4 @@ class TestViews(TestCase):
         new_addresses_in_db = Address.objects.count()
 
         assert new_addresses_in_db == 3
-    
-    def test_delete_user_addresses(self):
-        """
-            Here we test
-        """
-        delete_user_addresses(self.user_login)
-        new_addresses_in_db = Address.objects.count()
 
-        assert new_addresses_in_db == 0

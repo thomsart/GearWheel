@@ -21,42 +21,43 @@ def create_address_object(json_address, user_logged_id):
 
     if json_address['nature'] =='start':
         Address.objects.create(
-                    name = json_address['address'],
-                    longitude = float(json_address['longitude']),
-                    latitude = float(json_address['latitude']),
-                    start = True,
-                    end = False,
-                    stop = False,
-                    user = user_logged_id
-                )
+            name = json_address['address'],
+            longitude = float(json_address['longitude']),
+            latitude = float(json_address['latitude']),
+            start = True,
+            end = False,
+            stop = False,
+            user = user_logged_id
+        )
 
     elif json_address['nature'] =='end':
         Address.objects.create(
-                    name = json_address['address'],
-                    longitude = float(json_address['longitude']),
-                    latitude = float(json_address['latitude']),
-                    start = False,
-                    end = True,
-                    stop = False,
-                    user = user_logged_id
-                )
+            name = json_address['address'],
+            longitude = float(json_address['longitude']),
+            latitude = float(json_address['latitude']),
+            start = False,
+            end = True,
+            stop = False,
+            user = user_logged_id
+        )
 
     elif json_address['nature'] =='stop':
-        Address.objects.create(
-                    name = json_address['address'],
-                    longitude = float(json_address['longitude']),
-                    latitude = float(json_address['latitude']),
-                    start = False,
-                    end = False,
-                    stop = True,
-                    user = user_logged_id
-                )
-    
-    else:
-        return print("Problème de création d'objet address")
+        is_in_db = Address.objects.filter(name=json_address['address'], user_id=user_logged_id)
+        if is_in_db:
+            print("Tu as deja enregistré cette adesse !")
+            pass
+        else:
+            Address.objects.create(
+                name = json_address['address'],
+                longitude = float(json_address['longitude']),
+                latitude = float(json_address['latitude']),
+                start = False,
+                end = False,
+                stop = True,
+                user = user_logged_id
+            )
+
+    return Address.objects.filter(stop=True, user_id=user_logged_id).count()
 
 ################################################################################
 
-def delete_user_addresses(id_user):
-    Address.objects.filter(user_id=id_user).delete()
-    return
