@@ -49,25 +49,34 @@ def home(request):
     if request.method == 'POST':
         address_form = AddressForm(request.POST)
 
-        if address_form.is_valid():
-            start = bw_tools.clean_address(address_form.cleaned_data['start'])
-            end = bw_tools.clean_address(address_form.cleaned_data['end'])
-            start_json = bw_tools.request_to_GeoApiGouvFr(start, 'start')
-            end_json = bw_tools.request_to_GeoApiGouvFr(end, 'end')
+        if request.user.is_active:
 
-            Address.objects.filter(user_id=request.user.id, start=True).delete()
-            Address.objects.filter(user_id=request.user.id, end=True).delete()
+            if address_form.is_valid():
+                start = bw_tools.clean_address(address_form.cleaned_data['start'])
+                end = bw_tools.clean_address(address_form.cleaned_data['end'])
+                start_json = bw_tools.request_to_GeoApiGouvFr(start, 'start')
+                end_json = bw_tools.request_to_GeoApiGouvFr(end, 'end')
 
-            address_tools.create_address_object(
-                start_json,
-                User.objects.get(id=request.user.id)
+                Address.objects.filter(user_id=request.user.id, start=True).delete()
+                Address.objects.filter(user_id=request.user.id, end=True).delete()
+
+                address_tools.create_address_object(
+                    start_json,
+                    User.objects.get(id=request.user.id)
+                )
+                address_tools.create_address_object(
+                    end_json,
+                    User.objects.get(id=request.user.id)
+                )
+
+                return redirect('destinations')
+
+        else:
+            return render(
+                request, 'home.html', 
+                {"alerts": ["Pour pouvoir utiliser l'application connecte toi "
+                "ou crée un compte. C'est gratuit et sans engagement."]}
             )
-            address_tools.create_address_object(
-                end_json,
-                User.objects.get(id=request.user.id)
-            )
-
-            return redirect('destinations')
 
     else:
         address_form = AddressForm()

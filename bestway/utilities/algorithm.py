@@ -4,6 +4,7 @@
 import math
 from itertools import permutations
 
+
 """
     This module contains the functions we need to calculate the shortest way. 
 """

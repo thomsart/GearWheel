@@ -3,6 +3,7 @@
 
 from address.models import Address
 
+
 """
     This file contains all functions we need in the views to create address
     objects.
