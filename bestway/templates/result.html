@@ -7,17 +7,17 @@
     <div class="container_column">
 
         <div>
-            <h1>Voici l'ordre à suivre le plus judicieux :</h1>
+            <h1>Voici le trajet le plus court.</h1>
         </div>
 
         <div>
-            <h1>Le départ</h1>
+            <h3>Départ :</h3>
             {% for start in start %}
                 <ul class='start'>
                     {{ start }}
                 </ul>
             {% endfor %}
-            <h1>Ensuite les arrets</h1>
+            <h3>Arrets :</h3>
             {% for stop in stops %}
                 <ul class='stop'>
                     {{ stop }}
@@ -27,7 +27,7 @@
                     <p>Tu n'as choisis aucun arrêt</p>
                 </ul>
             {% endfor %}
-            <h1>L'arrivée</h1>
+            <h3>Arrivée :</h3>
             {% for end in end %}
                 <ul class='end'>
                     {{ end }}
@@ -37,7 +37,7 @@
 
     </div>
 
-    <form action="/bestway/" method='get'>
+    <form class="container_column" action="/bestway/" method='get'>
         {% csrf_token %}
         <input type="submit" value="Recommence">
     </form>

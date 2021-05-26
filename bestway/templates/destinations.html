@@ -7,17 +7,17 @@
     <div class="container_column">
 
         <div>
-            <h1>Entre tes destinations et valide lorsque tu les as toutes envoyées.</h1>
+            <h1>Ajoute tes destinations et calcule une fois finis.</h1>
         </div>
 
         <!-- form-->
-        <form  method="post">
+        <form class="container_column" method="post">
             {% csrf_token %}
             {{ stops_form }}
-            <input type="submit" value="Valider">
+            <input type="submit" value="Ajouter">
         </form>
 
-        <form action="result/" method="post">
+        <form class="container_column" action="result/" method="post">
             {% csrf_token %}
             <input type="submit" value="Calculer">
         </form>

@@ -4,7 +4,6 @@
 from django import forms
 
 from django.contrib.auth.forms import forms, UserCreationForm, UserChangeForm
-from django.core import validators
 
 from bestway.models import User
 
