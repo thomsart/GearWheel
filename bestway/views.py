@@ -22,7 +22,6 @@ from bestway.form import *
 #####                                VIEWS                                 #####
 ################################################################################
 
-
 class SignUpView(CreateView):
     """
         This view allows the user to login or create an account.

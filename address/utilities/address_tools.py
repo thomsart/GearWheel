@@ -61,4 +61,3 @@ def create_address_object(json_address, user_logged_id):
     return Address.objects.filter(stop=True, user_id=user_logged_id).count()
 
 ################################################################################
-
