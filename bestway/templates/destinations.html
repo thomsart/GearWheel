@@ -4,20 +4,20 @@
 {% block content %}
 
     <!-- Block-->
-    <div class="container_column">
+    <div class="block">
 
         <div>
             <h1>Ajoute tes destinations et calcule une fois finis.</h1>
         </div>
 
         <!-- form-->
-        <form class="container_column" method="post">
+        <form method="post">
             {% csrf_token %}
             {{ stops_form }}
             <input type="submit" value="Ajouter">
         </form>
 
-        <form class="container_column" action="result/" method="post">
+        <form action="result/" method="post">
             {% csrf_token %}
             <input type="submit" value="Calculer">
         </form>

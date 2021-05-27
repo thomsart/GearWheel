@@ -13,27 +13,26 @@
     <body>
 
         <nav>
-            <div class="container_row">
-                <a href="/bestway/"><img id="img_gearwheel" src="/static/assets/img/gearwheel_nav.png" title="Accueil"></a>
-                <h1>GearWheel - Bestway-Application</h1>
-                {% if user.is_authenticated %}
-                    <a href="/bestway/account/"><img src="/static/assets/img/icon_user_loged.png" title="Mon Compte"></a>
-                    <a href="{% url 'logout' %}"><img src="/static/assets/img/icon_logout.png" title="Déconnexion"></a>
-                {% else %}
-                    <a href="{% url 'login' %}"><img src="/static/assets/img/icon_login.png" title="Connexion"></a>
-                    <a href="{% url 'signup' %}"><img src="/static/assets/img/icon_register.png" title="Créer un compte"></a>
-                {% endif %}
-            </div>
+            <a href="/bestway/"><img id="img_gearwheel" src="/static/assets/img/gearwheel_nav.png" title="Accueil"></a>
+            <h1>GearWheel - Bestway-Application</h1>
+            {% if user.is_authenticated %}
+                <a href="/bestway/account/"><img src="/static/assets/img/icon_user_loged.png" title="Mon Compte"></a>
+                <a href="{% url 'logout' %}"><img src="/static/assets/img/icon_logout.png" title="Déconnexion"></a>
+            {% else %}
+                <a href="{% url 'login' %}"><img src="/static/assets/img/icon_login.png" title="Connexion"></a>
+                <a href="{% url 'signup' %}"><img src="/static/assets/img/icon_register.png" title="Créer un compte"></a>
+            {% endif %}
         </nav>
 
-        <div class="container_row">
+        <div class="traffic_logo">
             <img id="img_traffic" src="{% static 'assets/img/traffic.png' %}"/>
         </div>
 
+        <!-- block -->
         {% block content %}
         {% endblock content %}
 
-        <!-- Footer-->
+        <!-- Footer -->
         <footer>
             <a href="/bestway/mentions_legales/">
                 <h3>Mentions legales</h3>
