@@ -13,7 +13,7 @@
 
         <!-- form -->
         {% for alert in alerts %}
-            {{ alert }}
+            <p style="color: rgb(32, 0, 212);">{{ alert }}</p>
         {% empty %}
             <form method="post">
                 {% csrf_token %}

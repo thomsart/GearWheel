@@ -4,20 +4,20 @@
 {% block content %}
 
     <!-- Block-->
-    <div class="block">
+    <div class="block_result">
 
         <div>
             <h1>Voici le trajet le plus court.</h1>
         </div>
 
         <div>
-            <h3>Départ :</h3>
+            <h2>Départ :</h2>
             {% for start in start %}
                 <ul class='start'>
                     {{ start }}
                 </ul>
             {% endfor %}
-            <h3>Arrets :</h3>
+            <h2>Arrets :</h2>
             {% for stop in stops %}
                 <ul class='stop'>
                     {{ stop }}
@@ -27,7 +27,7 @@
                     <p>Tu n'as choisis aucun arrêt</p>
                 </ul>
             {% endfor %}
-            <h3>Arrivée :</h3>
+            <h2>Arrivée :</h2>
             {% for end in end %}
                 <ul class='end'>
                     {{ end }}
@@ -35,11 +35,13 @@
             {% endfor %}
         </div>
 
+        <form action="/bestway/" method='get'>
+            {% csrf_token %}
+            <input type="submit" value="Recommence">
+        </form>
+
     </div>
 
-    <form class="container_column" action="/bestway/" method='get'>
-        {% csrf_token %}
-        <input type="submit" value="Recommence">
-    </form>
+    
 
 {% endblock content %}
