@@ -82,7 +82,7 @@ nav
 
 img
 {
-    height: 8em;
+    height: 5em;
 }
 @media screen and (max-width: 1024px)
 {
@@ -95,15 +95,6 @@ img
 {
     height: 15em;
 }
-
-
-
-
-
-
-
-
-
 
 /* Traffic-logo */
 
@@ -131,51 +122,115 @@ img
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Le Block */
 
-.block
+.block, .big_block
 {
-    /* border: solid rgb(255, 0, 149); */
+    border: solid rgb(255, 0, 149);
+    position: relative;
     display: flex;
     flex-direction: column;
-    height: 25em;
+    height: 350px;
 }
 @media screen and (max-width: 1024px)
 {
-    .block
+    .block, .big_block
     {
         width: 100%;
-        height: 50em;
+        height: 1500px;
     }
 }
 
-.text
+.big_block
 {
-    /* border: solid rgb(255, 81, 0); */
+    height: 80em;
 }
 @media screen and (max-width: 1024px)
 {
-    .text
+    .big_block
     {
-        justify-content:none;
-    }
-}
-
-.block_result
-{
-    /* border: solid rgb(0, 255, 149); */
-    display: flex;
-    flex-direction: column;
-    height: 60em;
-}
-@media screen and (max-width: 1024px)
-{
-    .block_result
-    {
-        width: 100%;
         height: 200em;
     }
 }
+
+.text, .text_result
+{
+    border: solid rgb(0, 47, 255);
+}
+
+.text_result
+{
+    height: 50em;
+}
+
+
+
+
+
+
+
 
 
 
@@ -187,23 +242,56 @@ img
 
 
 /* Les Formulaires */
-
-form, input
+#form_home, #form_dest, #form_log, #form_sign, #form_result
 {
-    /* border: solid rgb(0, 17, 255); */
+    border: solid rgb(21, 255, 0);
+}
+#form_home, #form_dest
+{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 40%;
-    width: 60%;
+    /* justify-content: space-around; */
+    width: 100%;
+    height: 150px;
+}
+#form_log
+{
+    height: 260px;
+}
+#form_sign
+{
+    height: 5000px;
+}
+#form_result
+{
+    height: 100px;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+}
+@media screen and (max-width: 1024px)
+{
+    form
+    {
+        height: 30%;
+    }
+}
+
+input
+{
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 40px;
+    width: 400px;
+    margin-left: 30%;
 }
 
 input[type=submit]
 {
-    height: 40%;
     background-color: rgb(17, 158, 24);
 }
 
@@ -212,14 +300,61 @@ input[type=submit]:hover
     background-color: rgb(0, 255, 13);
 }
 
-@media screen and (max-width: 1024px)
-{
-    form, input[type=text], input[type=submit]
-    {
-        height: 30%;
-        width: 80%;        
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -184,7 +184,7 @@ def result(request):
 
     the_bestway = algorithm.find_the_bestway(all_ways)
 
-    # Address.objects.filter(user_id=request.user.id).delete()
+    Address.objects.filter(user_id=request.user.id).delete()
 
     return render(request, 'result.html', {
         'start': [the_bestway[0]],

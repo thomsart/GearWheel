@@ -4,13 +4,13 @@
 {% block content %}
 
     <!-- Block-->
-    <div class="block_result">
+    <div class="big_block">
 
-        <div>
+        <div class="text">
             <h1>Voici le trajet le plus court.</h1>
         </div>
 
-        <div>
+        <div class="text_result">
             <h2>Départ :</h2>
             {% for start in start %}
                 <ul class='start'>
@@ -35,10 +35,13 @@
             {% endfor %}
         </div>
 
-        <form action="/bestway/" method='get'>
-            {% csrf_token %}
-            <input type="submit" value="Recommence">
-        </form>
+        <!-- form-->
+        <div id="form_result">
+            <form action="/bestway/" method='get'>
+                {% csrf_token %}
+                <input type="submit" value="Recommence">
+            </form>
+        </div>
 
     </div>
 

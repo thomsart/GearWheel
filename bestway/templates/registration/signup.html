@@ -4,17 +4,18 @@
 {% block content %}
 
     <!-- Block-->
-    <div class="block_result">
+    <div class="big_block">
 
-        <div>
+        <div class="text">
             <h1>Inscris toi !</h1>
         </div>
 
-        <div>
+        <!-- form-->
+        <div id="form_sign">
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit">valider</input>
+                <input type="submit">
             </form>
         </div>
 

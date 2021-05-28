@@ -6,22 +6,24 @@
     <!-- Block-->
     <div class="block">
 
-        <div>
+        <div class="text">
             <h1>Ajoute tes destinations et calcule une fois finis.</h1>
         </div>
 
         <!-- form-->
-        <form method="post">
-            {% csrf_token %}
-            {{ stops_form }}
-            <input type="submit" value="Ajouter">
-        </form>
+        <div id="form_dest">
+            <form method="post">
+                {% csrf_token %}
+                {{ stops_form }}
+                <input type="submit" value="Ajouter">
+            </form>
 
-        <form action="result/" method="post">
-            {% csrf_token %}
-            <input type="submit" value="Calculer">
-        </form>
-        
+            <form action="result/" method="post">
+                {% csrf_token %}
+                <input formaction="result/" type="submit" value="Calculer">
+            </form>
+        </div>
+
     </div>
 
 {% endblock content %}
