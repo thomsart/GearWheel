@@ -3,7 +3,7 @@
 h1,h2,h3,p,ul
 {
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 @media screen and (max-width: 1024px)
 {
@@ -12,10 +12,6 @@ h1,h2,h3,p,ul
         font-size: 4em;
     }
 }
-
-
-
-
 
 
 
@@ -40,10 +36,6 @@ body
         padding-left: 5%;
     }
 }
-
-
-
-
 
 
 
@@ -118,123 +110,86 @@ img
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Le Block */
 
 .block, .big_block
 {
-    border: solid rgb(255, 0, 149);
+    /* border: solid rgb(255, 0, 149); */
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 300px;
 }
 @media screen and (max-width: 1024px)
 {
     .block, .big_block
     {
         width: 100%;
-        height: 1500px;
-    }
-}
-
-.big_block
-{
-    height: 80em;
-}
-@media screen and (max-width: 1024px)
-{
-    .big_block
-    {
-        height: 200em;
+        height: 800px;
     }
 }
 
 .text, .text_result
 {
-    border: solid rgb(0, 47, 255);
+    /* border: solid rgb(0, 47, 255); */
+}
+
+.big_block
+{
+    height: 950px;
+}
+@media screen and (max-width: 1024px)
+{
+    .big_block
+    {
+        height: 2400px;
+    }
+}
+
+.text, .text_result
+{
+    /* border: solid rgb(0, 47, 255); */
 }
 
 .text_result
 {
-    height: 50em;
+    height: 800px;
+}
+@media screen and (max-width: 1024px)
+{
+    .text_result
+    {
+        height: 2150px;
+    }
 }
 
+.block_login, .block_signup
+{
+    /* border: solid rgb(255, 0, 149); */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+@media screen and (max-width: 1024px)
+{
+    .block_login
+    {
+        height: 950px;
+    }
+}
 
-
-
-
-
-
-
-
-
-
+.block_signup
+{
+    height: 900px;
+}
+@media screen and (max-width: 1024px)
+{
+    .block_signup
+    {
+        height: 3200px;
+    }
+}
 
 
 
@@ -244,19 +199,33 @@ img
 /* Les Formulaires */
 #form_home, #form_dest, #form_log, #form_sign, #form_result
 {
-    border: solid rgb(21, 255, 0);
+    /* border: solid rgb(21, 255, 0); */
 }
 #form_home, #form_dest
 {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
     width: 100%;
     height: 150px;
 }
+@media screen and (max-width: 1024px)
+{
+    #form_home, #form_dest
+    {
+        height: 300px;
+    }
+}
+
 #form_log
 {
     height: 260px;
+}
+@media screen and (max-width: 1024px)
+{
+    #form_log
+    {
+        height: 800px;
+    }
 }
 #form_sign
 {
@@ -278,7 +247,7 @@ form
 {
     form
     {
-        height: 30%;
+        height: 100%;
     }
 }
 
@@ -288,6 +257,13 @@ input
     height: 40px;
     width: 400px;
     margin-left: 30%;
+}
+@media screen and (max-width: 1024px)
+{
+    input
+    {
+        height: 100px;
+    }
 }
 
 input[type=submit]
@@ -300,65 +276,21 @@ input[type=submit]:hover
     background-color: rgb(0, 255, 13);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.mentionsCGU
+{
+    /* border: solid rgb(255, 0, 149); */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 3200px;
+}
+@media screen and (max-width: 1024px)
+{
+    .mentionsCGU
+    {
+        height: 21500px;
+    }
+}
 
 
 
