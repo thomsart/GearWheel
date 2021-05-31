@@ -1,11 +1,11 @@
 # GearWheel-Bestway
 <h2>Who, When 'n' Why ?</h2>
 
-<p>J'ai develloppé cette plateforme seul dans le cadre de ma formation OpenClassrooms du parcours 'developpeur d'applications Python' durant les mois de Avril à Mai 2021. Je suis ouvert à toute amélioration de votre part bien entendu si vous le désirez.</p>
+<p>J'ai develloppé cette plateforme seul dans le cadre de ma formation OpenClassrooms du parcours 'developpeur d'applications Python' durant les mois d'Avril/Mai 2021. Je suis ouvert à toute amélioration de votre part bien entendu si vous le désirez.</p>
 
 <h2>Kesako ?</h2>
 
-<p>GearWheel est un gestionnaire libre d'accès informatique déployé sur internet déstiné à organiser une entreprise dans le secteur du batiment. Dans l'idée il propose plusieurs applications telles que Bestway ayant chacune sa particularité comme par exemple l'organisation des chantiers, du S.A.V., des contrats d'entretiens, des devis, de la facturation ou encore du stock. A l'heure actuelle seul Bestway est en service.<br>Bestway est donc une application parmis de futures autres dans GearWheel. Elle a pour mission de gerer intelligemment les trajets d'un dépanneur (du S.A.V.) au cours de sa journée en lui proposant le trajet le moins couteux en kilomêtre à vol d'oiseau pour cette première version. Par la suite seront pris en compte le réseau routier et dans l'idéal le traffic en temps réel. L'utilisateur se créer donc un compte et peux ensuite entrer toutes les adresses: le départ, l'arrivée et ensuite les arrêts pour ses dépannages à effectuer.</p>
+<p>GearWheel est un gestionnaire libre d'accès informatique déployé sur internet déstiné à organiser une entreprise dans le secteur du batiment. Dans l'idée il propose plusieurs applications telle que Bestway ayant chacune sa particularitée comme par exemple l'organisation des clients, des chantiers, du S.A.V, des contrats d'entretiens, des devis, de la facturation ou encore du stock. A l'heure actuelle seule Bestway est en service.<br>Bestway est donc une application parmis de futures autres dans GearWheel. Sa mission est de gerer intelligemment les trajets d'un dépanneur (du S.A.V.) au cours de sa journée en lui proposant le trajet le moins couteux en kilomêtre à vol d'oiseau pour cette première version. Par la suite seront pris en compte le réseau routier et dans l'idéal le traffic en temps réel. L'utilisateur se crée donc un compte et peux ensuite entrer toutes les adresses: le départ, l'arrivée et ensuite les arrêts pour ses dépannages à effectuer.</p>
 
 <h2>Installation</h2>
 
