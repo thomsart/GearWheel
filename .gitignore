@@ -1,2 +1,4 @@
+__pycache__
 env
 bestway/utilities/run.py
+gearwheel/settings/production.py
