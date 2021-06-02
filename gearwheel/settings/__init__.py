@@ -22,11 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'dh11A511Sg1sg1rh1Gk1k318eE47sty'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
         'NAME': 'gearwheel_db', # le nom de notre base de donnees creee precedemment
-        'USER': 'thomas', # attention : remplacez par votre nom d'utilisateur
-        'PASSWORD': 'TnC280620114Life',
-        'HOST': 'localhost',
+        'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur
+        'PASSWORD': 'metalspirit77+',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
