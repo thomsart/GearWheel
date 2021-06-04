@@ -1,0 +1,315 @@
+/* types text */
+
+h1,h2,h3,p,ul
+{
+    text-align: center;
+    font-size: 1.5em;
+}
+@media screen and (max-width: 1024px)
+{
+    h1,h2,h3,p,ul
+    {
+        font-size: 4em;
+    }
+}
+
+
+
+
+
+
+/* Body */
+
+body
+{
+    background-color: #c40c0c;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding-left: 10%;
+}
+@media screen and (max-width: 1024px)
+{
+    body
+    {
+        width: 90%;
+        padding-left: 5%;
+    }
+}
+
+
+
+
+
+
+/* Navigation */
+
+nav
+{
+    /* border: solid rgb(9, 255, 0); */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+@media screen and (max-width: 1024px)
+{
+    nav
+    {
+        margin-top: 4em;
+        height: 16em;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1024px)
+{
+    nav h1
+    {
+        display: none;
+    }
+}
+
+/* les images dans la navigation */
+
+img
+{
+    height: 5em;
+}
+@media screen and (max-width: 1024px)
+{
+    img
+    {
+        height: 15em;
+    }
+}
+#img_traffic
+{
+    height: 15em;
+}
+
+/* Traffic-logo */
+
+.traffic_logo
+{
+    /* border: solid rgb(255, 230, 0); */
+    display: flex;
+    justify-content: space-around;
+    height:15em;
+}
+@media screen and (max-width: 1024px)
+{
+    .traffic_logo, #img_traffic
+    {
+        height: 25em;
+    }
+}
+
+
+
+
+
+
+/* Le Block */
+
+.block, .big_block
+{
+    /* border: solid rgb(255, 0, 149); */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+@media screen and (max-width: 1024px)
+{
+    .block, .big_block
+    {
+        width: 100%;
+        height: 800px;
+    }
+}
+
+.text, .text_result
+{
+    /* border: solid rgb(0, 47, 255); */
+}
+
+.big_block
+{
+    height: 950px;
+}
+@media screen and (max-width: 1024px)
+{
+    .big_block
+    {
+        height: 2400px;
+    }
+}
+
+.text, .text_result
+{
+    /* border: solid rgb(0, 47, 255); */
+}
+
+.text_result
+{
+    height: 800px;
+}
+@media screen and (max-width: 1024px)
+{
+    .text_result
+    {
+        height: 2150px;
+    }
+}
+
+.block_login, .block_signup
+{
+    /* border: solid rgb(255, 0, 149); */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+@media screen and (max-width: 1024px)
+{
+    .block_login
+    {
+        height: 950px;
+    }
+}
+
+.block_signup
+{
+    height: 900px;
+}
+@media screen and (max-width: 1024px)
+{
+    .block_signup
+    {
+        height: 3200px;
+    }
+}
+
+
+
+
+
+
+/* Les Formulaires */
+#form_home, #form_dest, #form_log, #form_sign, #form_result
+{
+    /* border: solid rgb(21, 255, 0); */
+}
+#form_home, #form_dest
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
+}
+@media screen and (max-width: 1024px)
+{
+    #form_home, #form_dest
+    {
+        height: 300px;
+    }
+}
+
+#form_log
+{
+    height: 260px;
+}
+@media screen and (max-width: 1024px)
+{
+    #form_log
+    {
+        height: 800px;
+    }
+}
+#form_sign
+{
+    height: 5000px;
+}
+#form_result
+{
+    height: 100px;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+}
+@media screen and (max-width: 1024px)
+{
+    form
+    {
+        height: 100%;
+    }
+}
+
+input
+{
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    margin-left: 30%;
+}
+@media screen and (max-width: 1024px)
+{
+    input
+    {
+        height: 100px;
+    }
+}
+
+input[type=submit]
+{
+    background-color: rgb(17, 158, 24);
+}
+
+input[type=submit]:hover
+{
+    background-color: rgb(0, 255, 13);
+}
+
+.mentionsCGU
+{
+    /* border: solid rgb(255, 0, 149); */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 3200px;
+}
+@media screen and (max-width: 1024px)
+{
+    .mentionsCGU
+    {
+        height: 21500px;
+    }
+}
+
+
+
+
+
+
+/* Le Footer */
+
+footer
+{
+    /* border: solid rgb(3, 6, 182); */
+    display:flex;
+    justify-content: space-evenly;
+}
+@media screen and (max-width: 1024px)
+{
+    footer,h3
+    {
+        flex-direction: column;
+        font-size: 1.5em;
+    }
+}
