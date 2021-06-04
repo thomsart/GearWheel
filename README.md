@@ -37,4 +37,4 @@ Et pour avoir la couverture des tests faites:<br>
 <h2>Liens de la plateforme sur le web</h2>
 
 <p>Vous pouvez toute-fois vous rendre sur le site en ligne à cette adresse:<br>
-<em>http://localhost:8000/bestway/</em></p>
+<em>http://138.68.130.22/bestway/</em></p>
