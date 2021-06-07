@@ -49,7 +49,7 @@ class TestViews(TestCase):
         }
 
         self.stop_address = {
-            'address': '186 Rue du Faubourg Saint-Antoine 75012 Paris', 
+            'address': '11 rue des templiers la Croix en Brie', 
             'nature': 'stop', 
             'longitude': '2.383188', 
             'latitude': '48.850161'
